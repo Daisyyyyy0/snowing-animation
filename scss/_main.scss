@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background:
+        linear-gradient(180deg, 
+            rgba(37, 32, 45, 1)30%, 
+            rgba(41, 35, 117, 0.7)100%);
+    overflow: hidden;            
+}
+
+.stars{
+    position: relative;
+    width: 100%;
+
+    @for $i from 1 through 30{
+        .star-#{$i} {
+            position: absolute;
+            top:-10px;
+            left: 30px * $i;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            animation: fall-#{$i};
+            animation-duration: (5s *random()) + 1;
+            animation-delay: 3s * random();
+            animation-iteration-count: infinite;
+        }
+    }
+
+}
+
+@for $i from 1 through 30{
+    @keyframes fall-#{$i} {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(500px *random(), 1000px + 200px *random());
+        }
+    }
+}
+
